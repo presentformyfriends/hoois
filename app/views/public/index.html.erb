@@ -1,0 +1,15 @@
+<h1>Hoois Lookup</h1>
+
+<%= form_tag lookup_path, class: "lookup", method: :get do %>
+  <%= text_field_tag(:lookup, "", size: 100, maxlength: 255, :placeholder => "Enter a domain (e.g. worldbirds.com)") %>
+  <div class="submit-button-wrapper">
+    <%= submit_tag("HOOIS") %>
+  </div>
+<% end %>
+
+<div class="owl-container">
+  <div class="eyes-container">
+    <div class="eyes"></div>
+    <div class="eyes"></div>
+  </div>
+</div>

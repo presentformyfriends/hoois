@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hoois Lookup</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <noscript>
+      <div class="alert alert-warning"><i class="fa fa-warning"></i>Hoois Lookup requires JavaScript to function properly!</div>
+    </noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet"> 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'app' %>
+  </head>
+
+  <body>
+
+    <main>
+
+      <%# <h1>Hoois Lookup</h1> %>
+
+      <%= yield %>
+
+      <%# <div class="owl-container">
+
+        <div class="eyes-container">
+          <div class="eyes"></div>
+          <div class="eyes"></div>
+        </div>
+      
+      </div> %>
+    
+    </main>
+
+  </body>
+
+</html>
