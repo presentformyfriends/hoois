@@ -38,7 +38,7 @@ class LookupController < ApplicationController
       # FLASH MESSAGE
       flash[:alert] = "Lookup failed"
       p "Invalid lookup 1"
-      # EXIT
+      return
 
     end
 
@@ -99,9 +99,16 @@ class LookupController < ApplicationController
     end
 
     # FOR "www.miakhalifa.com"
-    @result = @response.to_s.split(">>>").first
+    # @result = @response.to_s.split(">>>").first
+    @result = @response.to_s.strip
 
-    flash[:success] = "Lookup successful"
+    if @result.start_with?("Domain Name:")
+      flash[:success] = "Lookup successful"
+    elsif @result.start_with?("No match for")
+      flash[:alert] = "No match"
+    else
+      flash[:danger] = "Lookup error, please try again"
+    end
 
   end
 
