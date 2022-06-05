@@ -15,25 +15,4 @@ window.onload = function() {
 
   });
 
-  // Eyes follow caret in input field when user types
-
-  const getCaretCoordinates = require("textarea_caret");
-
-  document.querySelector("text").addEventListener("input", function () {
-    const caret = getCaretCoordinates(this, this.selectionEnd);
-    console.log("(top, left, height) = (%s, %s, %s)", caret.top, caret.left, caret.height);
-  })
-
 };
-
-
-
-// const eye1 = document.querySelector('.eye-left');
-// const eye2 = document.querySelector('.eye-right');
-// const eyes = document.querySelectorAll('.eyes');
-
-// window.addEventListener('mousemove', (evt) => {
-//   const x = (window.innerWidth / 2 - evt.pageX) / 160;
-//   const y = (windows.innerHeight / 2 - evt.pageY) / 160;
-//   eyes.style.transform = `translateY(${y}px) translateY(${x}px)`;
-// } )

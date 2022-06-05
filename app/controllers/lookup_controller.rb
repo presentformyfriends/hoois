@@ -36,11 +36,7 @@ class LookupController < ApplicationController
     else
 
       # FLASH MESSAGE
-      # redirect_to homepage_path, render "layouts/flash"
-      # redirect_to homepage_path
       flash[:alert] = "Lookup failed"
-      # redirect_to :back, flash { danger: "Invalid Lookup" }
-      # redirect_to homepage_path, render "layouts/flash"
       p "Invalid lookup 1"
       # EXIT
 
@@ -64,12 +60,6 @@ class LookupController < ApplicationController
       raise
     end
 
-    # p "Scheme: #@scheme"
-    # p "Domain: #@domain"
-    
-    # Request status code for URL with open-uri
-    # @status = URI.open(@url, redirect: false).status
-
     # If status OK, parse Lookup URL and extract domain
     if @status == ["200", "OK"]
                       
@@ -86,14 +76,6 @@ class LookupController < ApplicationController
       # EXIT
 
     end
-
-    # Parse Lookup URL and extract domain
-    # uri = URI.parse(@url)
-    # @scheme = uri.scheme # https
-    # @domain = uri.host # www.tumblrgallery.xyz
-    # @path = uri.path # /tumblrblog/1152853.html
-    # @query = uri.query # nil
-    # @fragment = uri.fragment # nil
 
     if @domain.present?
 
@@ -117,7 +99,6 @@ class LookupController < ApplicationController
     end
 
     # FOR "www.miakhalifa.com"
-    # @result = @response.to_s.split(">>>").first
     @result = @response.to_s.split(">>>").first
 
     flash[:success] = "Lookup successful"
@@ -128,7 +109,6 @@ class LookupController < ApplicationController
   protected
 
   def configure_lookup_params
-    # params.require(:lookup).permit(:comment, :post_id, :return_to)
     params.permit(:lookup, :commit)
   end
 

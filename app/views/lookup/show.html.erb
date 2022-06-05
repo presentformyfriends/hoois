@@ -2,7 +2,6 @@
   <%= render "layouts/flash" %>
   <div>
     <%= button_to "Perform another Hoois Lookup", homepage_path, class: "home-button", method: :get %>
-    <%# <button class="home-button">Perform another Hoois Lookup</button>   %>
   </div>
   <div class="result-format">
     <p><%= @result if @result.present? %></p>
