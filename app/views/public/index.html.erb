@@ -2,7 +2,7 @@
 
 <%= form_tag lookup_path, class: "lookup", method: :get do %>
   <%= text_field_tag(:lookup, "", size: 100, maxlength: 255, :placeholder => "Enter a domain (e.g. worldbirds.com)") %>
-  <div class="submit-button-wrapper">
+  <div>
     <%= submit_tag("HOOIS") %>
   </div>
 <% end %>
