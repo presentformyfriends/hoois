@@ -2,34 +2,52 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* border: 3px solid limegreen; */
+  /* background-color: red; */
 }
 
 body {
-  display: grid;
-  height: 100vh;
+  /* display: grid; */
+  /* height: 100vh; */
+  /* width: 100vw; */
+  width: 100vw;
   background-image: url("nature-bw.jpg");
-  background-size: cover;
+  /* background-size: cover; */
+  background-size: auto;
   background-position: center;
   background-repeat: no-repeat;
   font-family: 'Mukta', sans-serif;
-  color: #fff;
+  /* color: #fff; */
   overflow: hidden;
   /* border: 3px solid limegreen;
   background-color: red; */
 }
 
+h1 {
+  color: #fff;
+}
+
+p {
+  margin: 1rem auto;
+  font-size: 1rem;
+  /* color: #fff; */
+  /* font-size: 20px !important; */
+}
+
 main {
   /* display: grid; */
   /* grid-template-columns: repeat(1, 1fr); */
+  /* grid-template-columns: 50px, 1fr; */
+  /* grid-template-rows: 50px, 1fr; */
   /* grid-auto-flow: row; */
-  vertical-align: middle;
+  /* vertical-align: middle; */
   line-height: 1.5;
-  height: 100%;
+  width: 100vw;
+  /* height: 100%; */
   /* margin: 2% auto; */
   /* padding: 1%; */
   justify-content: center;
   align-content: space-between;
-  /* grid-template-columns: auto auto auto; */
   /* border: 3px solid limegreen;
   background-color: purple; */
 }
@@ -38,22 +56,36 @@ h1 {
   font-family: 'Libre Baskerville', serif;
   text-align: center;
   line-height: 1.2;
-  font-size: 4rem;
+  font-size: 2rem;
   /* text-shadow: 1px 1px 2px #222 */
   text-shadow: 1px 1px 2px #EA9D04
 }
 
-p {
-  font-size: 1rem;
+h2 {
+  text-align: center;
 }
 
-.lookup {
+.lookup-form {
   /* margin: 1rem auto; */
   /* padding: 24px 32px 16px 8px; */
-  padding-top: 32px;
+  /* padding-top: 32px; */
+  padding-top: 2rem;
   text-align: center;
-  border: 16px;
-  border-right-width: 24px;
+  /* border: 16px; */
+  border: 1rem;
+  /* border-right-width: 24px; */
+  border-right-width: 1.5rem;
+}
+
+.lookup-field {
+  /* padding: 1px 6px; */
+  /* display: block; Not required */
+  max-width: 50%;
+  min-width: 200px;
+  min-height: 40px; /* Not required but looks good */
+  line-height: 20px; /* Not required but looks good */
+  /* overflow: hidden; Not required */
+  /* resize: both; Not required */
 }
 
 input[type="text"] {
@@ -61,11 +93,13 @@ input[type="text"] {
   border: 2px solid #EA9D04;
   border-radius: 4px;
   text-indent: 1rem;
-  outline: none;
+  /* outline: none; */
 }
 
-input[type="submit"] {
+.submit-button {
   margin: 2rem auto;
+  min-width: 115px;
+  min-height: 40px;
   background-color: #FF931E;
   font-weight: 500;
   font-size: 18px;
@@ -76,61 +110,100 @@ input[type="submit"] {
   border-radius: 7px;
 }
 
-input[type="submit"]:hover {
+.submit-button:hover {
   background-color: #fff;
   color: #FF931E;
 }
 
 .home-button {
-  background-color: #FF931E;
+  width: 195px;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.8rem;
-  padding: 0.5% 1.5%;
+  /* padding-left: 40px; */
+  /* padding: 0.5% 0.5% 0.5% 3%; */
+  padding: 1% 1% 1% 3%;
+  background-color: #FF931E;
+  background-image: url("owl-icon-white.png");
+  background-size: 20%;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
   cursor: pointer;
   color: #fff;
   border-radius: 7px;
-  text-decoration: none;
 }
 
 .home-button:hover {
+  /* padding-left: 40px; */
   background-color: #fff;
+  background-image: url("owl-icon-orange.png");
   color: #FF931E;
+}
+
+.result-wrapper {
+  padding: 1rem;
+  /* background-image: url("moss.jpg"); */
+  width: 100vw;
+  height: 100vh;
+  background-position: center top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* background-attachment: local; */
+  background-attachment: scroll;
+  /* border: 1px solid #2c3e50; */
+  overflow-y: scroll;
 }
 
 .result {
   /* position: relative; */
   text-align: center;
-  /* justify-content: center; */
+  justify-content: center;
   width: 70%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  padding: 2rem;
   font-size: 2rem;
   font-weight: 500;
-  color: #fff;
-  text-shadow: 1px 1px 2px #222
+  /* color: #fff; */
+  text-shadow: 1px 1px 2px #222;
+  /* background: rgba(39,62,84,0.82); */
+  z-index: 2;
   /* border: 3px solid black;
   background-color: blue; */
 }
 
 .result-format {
-  width: 50%;
-  padding: 5%;
-  margin: 1rem auto;
+  /* width: 70%; */
+  min-width: 500px;
+  padding: 1% 5%;
+  margin: 1.75rem auto;
+  text-align: left;
   text-shadow: none;
   background-color: #ecf0f1;
-  border: 1px solid #34495e;
+  border: 10px double #34495e;
   color: #2c3e50;
+}
+
+.result-format a:hover {
+  background-color: #FF931E;
 }
 
 
 /* FLASH MESSAGE STYLING */
 
+#flash {
+  opacity: 1;
+  transition: opacity 3s;
+}
+
+#flash.fade {
+  opacity: 0;
+}
+
 .flash {
-  /* display: inline-block; */
-  margin: 1rem auto;
+  margin: 0 auto 2rem auto;
   padding: 0.5%;
-  /* width: fit-content; */
-  width: 50%;
+  width: 70%;
   text-shadow: none;
 }
 
@@ -146,20 +219,29 @@ input[type="submit"]:hover {
   color: #EB9D04;
 }
 
+.flash-warning {
+  border: 2px solid crimson;
+  background: pink;
+  color: crimson;
+}
+
 
 /* OWL */
 
 .owl-container {
   position: relative;
-  /* position: static; */
   margin: 0 auto;
-  /* height: 70vh; */
-  /* width: 35vw; */
-  height: 70vh;
-  width: 100%;
+  /* height: 641px; */
+  height: 69vh;
+  /* width: 1000px; */
+  /* width: 62.5rem; */
+  /* width: 52vw; */
+  min-width: 600px;
+  /* max-width: 1000px;
+  min-width: 300px; */
   background-image: url("owl.png");
   background-size: contain;
-  background-position: center;
+  background-position: left;
   background-repeat: no-repeat;
   /* border: 3px solid limegreen;
   background-color: purple; */
@@ -167,27 +249,24 @@ input[type="submit"]:hover {
 
 .eyes-container {
   display: flex;
-  justify-content: center;
 }
 
 .eyes-container .eyes {
   position: relative;
-  /* flex: 0 0 100px; */
-  /* top: 20%; */
-  /* width: 6.25rem; */
-  right: 0.25rem;
-  width: 12.5rem;
-  /* height: 6.25rem; */
-  height: 12.5rem;
-  display: block;
+  /* right: 0.25rem; */
+  right: 0.2vw;
+  /* width: 12.5rem; */
+  width: 10.4vw;
+  /* max-width: 1000px;
+  min-width: 195px; */
+  /* height: 12.5rem; */
+  height: 21.6vh;
   background-color: #fff;
-  /* margin: 0 1.25rem; */
-  margin: 6.5rem 1.375rem;
-  /* margin: 0 4.575rem; */
+  /* margin: 6.5rem 1.375rem; */
+  margin: 11.2vh 1.1vw;
   border-radius: 100%;
-  /* border-radius: 100%; */
-  /* box-shadow: 0 0.313rem 2.813rem rgba(0, 0, 0, 0.2), inset 0 0 0.938rem #f5af19, inset 0 0 1.563rem #f5af19; */
-  box-shadow: 0 0.626rem 5.626rem rgba(0, 0, 0, 0.2), inset 0 0 1.876rem #f5af19, inset 0 0 3.126rem #f5af19;
+  /* box-shadow: 0 0.626rem 5.626rem rgba(0, 0, 0, 0.2), inset 0 0 1.876rem #f5af19, inset 0 0 3.126rem #f5af19; */
+  box-shadow: 0 0.52vw 9.7vh rgba(0, 0, 0, 0.2), inset 0 0 1.6vw #f5af19, inset 0 0 2.6vw #f5af19;
 }
 
 .eyes-container .eyes::before {
@@ -196,18 +275,83 @@ input[type="submit"]:hover {
   content: "";
   /* Pupil and iris position */
   top: 50%;
-  /* left: 2.188rem; */
-  left: 4.376rem;
-  
+  /* top: 0.9vh; */
+  /* top: 0.4vw; */
+  /* left: 4.376rem; */
+  left: 3.65vw;
   transform: translate(-50%, -50%);
-  /* width: 3.125rem; */
-  width: 6.25rem;
-  /* height: 3.125rem; */
-  height: 6.25rem;
-  /* border: 0.625rem solid skyblue; */
-  /* border: 1.25rem solid skyblue; */
-  border: 1.25rem solid #2AC93E;
+  /* transform: translate(-0.4vw, -0.9vh); */
+  /* width: 6.25rem; */
+  width: 5.2vw;
+  /* height: 6.25rem; */
+  height: 10.79vh;
+  /* border: 1.25rem solid #2AC93E; */
+  border: 1vw solid #2AC93E;
   border-radius: 100%;
-  /* border-radius: 100%; */
   background: #000;
 }
+
+.eyes {
+  min-width: 162px;
+}
+
+/* .cursor {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #d8fa08;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: color;
+} */
+
+
+/* MEDIA QUERIES */
+
+/* @media (min-width: 50px) {
+  .owl-container {
+    background-position: left;
+  }
+} */
+
+@media (min-width: 400px) {
+  h1 {
+    font-size: 3rem;
+  }
+  .owl-container {
+    background-position: center;
+  }
+  .eyes-container {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 680px) {
+  .result {
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  .result {
+    min-width: 620px;
+  }
+}
+
+@media (min-width: 1090px) {
+  .result-format {
+    min-width: 845px;
+  }
+}
+
+/* @media (min-width: 1074px) {
+  * {
+    border: 2px solid blue;
+  }
+} */

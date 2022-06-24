@@ -1,9 +1,21 @@
-<div class="result">
-  <%= render "layouts/flash" %>
-  <div>
-    <%= button_to "New Hoois Lookup", homepage_path, class: "home-button", method: :get %>
-  </div>
-  <div class="result-format">
-    <p><%= @result if @result.present? %></p>
+<div class="result-wrapper">
+  <div class="result">
+    <%= render "layouts/flash" %>
+    <div>
+      <%= button_to "New Hoois Lookup", homepage_path, class: "home-button", method: :get %>
+    </div>
+    <div class="result-format">
+      <h2><%= @resultHeading if @resultHeading.present? %></h2>
+      <p><%= simple_format @result if @result.present? %></p>
+    </div>
   </div>
 </div>
+
+<script>
+  window.setTimeout("document.getElementById('flash').style.display='none';", 5000);
+  const speed = 2000;
+  setTimeout(function() {
+    const flashFadeOut = document.getElementById('flash');
+    flashFadeOut.classList.toggle('fade');
+  }, speed);
+</script>

@@ -2,43 +2,22 @@ class LookupController < ApplicationController
   before_action :configure_lookup_params
 
   def show
-    require "uri"
-    require "public_suffix"
-    require "open-uri"
 
     if params[:lookup].present?
 
-      # Get user-submitted Lookup data from params # https://www.tumblrgallery.xyz/tumblrblog/1152853.html
-      @lookup = params[:lookup]
+      # Get user-submitted Lookup data from params, strip and gsub all whitespace
+      @lookup = params[:lookup].strip.gsub(/ /, "")
       p "Lookup: #@lookup"
 
-      # Check if lookup data 
-      if @lookup.start_with?("https://") == true
-        
-        @url = @lookup
-        p "Lookup starts with correct scheme"
-
-      elsif @lookup.start_with?("http://") == true
-
-        @url = @lookup.sub("http", "https")
-        p "Wrong protocol, new Lookup: #@url"
-      
-      else
-      
-        @url = ("https://#@lookup")
-        p "Protocol missing, new Lookup: #@url"
-
-      end
-
-      # Call parseURL function and pass @url
-      parseURL(@url)
+      # Call manualValidation function and pass @lookup
+      manualValidation(@lookup)
 
     else
 
-      # FLASH MESSAGE
+      # "Lookup failed" flash message, return "No match" heading
       flash[:alert] = "Lookup failed"
-      p "Invalid lookup 1"
-      return
+      @resultHeading = "No match"
+      return @resultHeading
 
     end
 
@@ -46,18 +25,65 @@ class LookupController < ApplicationController
 
 
   private
-  
-  def parseURL(url)
 
-    uri = URI.parse(url)
+  def manualValidation(lookup)
+      
+    # Lookup starts with "https://" but not "https://www."
+    if ( @lookup.start_with?("https://") && @lookup !~ /https:\/\/www./ )
+      
+      @url = @lookup
+
+    # Lookup starts with "https://www."
+    elsif @lookup.start_with?("https://www.")
+
+      @url = @lookup.sub("https://www.", "https://")
+
+    # Lookup starts with "http://" but not "http://www."
+    elsif ( @lookup.start_with?("http://") && @lookup !~ /http:\/\/www./ ) 
+
+      @url = @lookup.sub("http", "https")
+
+    # Lookup starts with "http://www."
+    elsif @lookup.start_with?("http://www.")
+
+      @url = @lookup.sub("http://www.", "https://")
+
+    # Lookup starts with "www."
+    elsif @lookup.start_with?("www.")
+
+      @url = @lookup.sub("www.", "https://")
+
+    else
+    
+      @url = ("https://#@lookup")
+
+    end
+
+    # Call getDomain function and pass @url
+    getDomain(@url)
+
+  end
+
+
+  def getDomain(url)
+    require 'net/http'
+    # require "uri"
+    require "open-uri"
+
+    # Get status for URL, retry set amount of times for redirects, catch SocketError and return "No match"
     tries = 3
-
     begin
-      @status = uri.open(redirect: false).status
+      @status = ( URI(url).open(redirect: false) ).status
     rescue OpenURI::HTTPRedirect => redirect
-      uri = redirect.uri # assigned from the "Location" response header
+      uri = redirect.uri # taken from the "Location" response header
       retry if (tries -= 1) > 0
       raise
+    rescue SocketError => e
+      # p e.class
+      # "No match" flash message, return heading
+      flash[:alert] = "Lookup failed"
+      @resultHeading = "No match"
+      return @resultHeading
     end
 
     # If status OK, parse Lookup URL and extract domain
@@ -68,14 +94,25 @@ class LookupController < ApplicationController
       # Extract domain
       @domain = URI(url).host
 
+      # Call getResponse function and pass @domain
+      getResponse(@domain)
+
     else
 
-      # FLASH MESSAGE
+      # "No match" flash message, return heading
       flash[:alert] = "Lookup failed"
-      p "Invalid lookup 2"
-      # EXIT
+      @resultHeading = "No match"
+      return @resultHeading
 
     end
+
+  end
+
+
+  def getResponse(domain)
+    require "public_suffix"
+    # require "uri"
+    require "whois-parser"
 
     if @domain.present?
 
@@ -87,27 +124,53 @@ class LookupController < ApplicationController
       p "Valid? #@validity"
 
       # Use Whois gem to get Whois response for domain
-      @response = Whois.whois(@domain)
+      @response = Whois.lookup(@domain)
     
     else
 
-      p "Domain IS NIL: #@domain"
-      # FLASH MESSAGE
-      p "Invalid lookup 3"
-      # EXIT
+      # "No match" flash message, return heading
+      flash[:alert] = "Lookup failed"
+      @resultHeading = "No match"
+      return @resultHeading
 
     end
 
-    # FOR "www.miakhalifa.com"
-    # @result = @response.to_s.split(">>>").first
-    @result = @response.to_s.strip
 
-    if @result.start_with?("Domain Name:")
-      flash[:success] = "Lookup successful"
-    elsif @result.start_with?("No match for")
-      flash[:alert] = "No match"
+    if response.present?
+
+      # Get Whois record
+      @result = @response.content
+      
+      if @result.start_with?("Domain Name:", "   Domain Name:")
+
+        flash[:success] = "Lookup successful"
+
+        @resultHeading = @domain
+
+        # Make all hyperlinks clickable in Whois record
+        @result = @result.gsub(/https?:\/\/.*/, '<a href="\0">\0</a>').html_safe
+
+        # Have URL show user query
+        # redirect_to :action => @domain
+
+      elsif @result.start_with?("   No match for")
+        
+        flash[:alert] = "Lookup failed"
+        @resultHeading = "No match for #@domain"
+        return @resultHeading
+      
+      else
+      
+        flash[:warning] = "Lookup error, please try again"
+        @resultHeading = "No match" 
+        return @resultHeading
+      
+      end
+
     else
-      flash[:danger] = "Lookup error, please try again"
+
+      return
+
     end
 
   end

@@ -1,6 +1,6 @@
 <% if flash.any? %>
   <% flash.each do |type, msg| %>
-    <div class="flash flash-<%= type %>">
+    <div id="flash" class="flash flash-<%= type %>">
       <%= msg %>
     </div>
   <% end %>
