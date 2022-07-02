@@ -34,9 +34,6 @@ gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-# URL handling
-gem 'open-uri'
-
 # Domain inspection
 gem 'public_suffix'
 

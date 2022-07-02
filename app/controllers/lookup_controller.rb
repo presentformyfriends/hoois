@@ -67,7 +67,6 @@ class LookupController < ApplicationController
 
   def getDomain(url)
     require 'net/http'
-    # require "uri"
     require "open-uri"
 
     # Get status for URL, retry set amount of times for redirects, catch SocketError and return "No match"
@@ -111,7 +110,6 @@ class LookupController < ApplicationController
 
   def getResponse(domain)
     require "public_suffix"
-    # require "uri"
     require "whois-parser"
 
     if @domain.present?
