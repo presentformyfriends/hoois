@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: hoois
-  username: <%= Rails.application.credentials.database[:username] %>
-  password: <%= Rails.application.credentials.database[:password] %>
+  username: deploy
+  password: <%= ENV['HOOIS_DATABASE_PASSWORD'] %>
