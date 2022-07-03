@@ -25,6 +25,7 @@ development:
   <<: *default
   username: <%= Rails.application.credentials.database[:username] %>
   password: <%= Rails.application.credentials.database[:password] %>
+  host: localhost
   database: hoois_development
 
   # The specified database role being used to connect to postgres.
@@ -61,6 +62,7 @@ test:
   <<: *default
   username: <%= Rails.application.credentials.database[:username] %>
   password: <%= Rails.application.credentials.database[:password] %>
+  host: localhost
   database: hoois_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -85,6 +87,6 @@ test:
 #
 production:
   <<: *default
-  database: hoois
-  username: deploy
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  database: <%= Rails.application.credentials.production[:database_name] %>
+  username: <%= Rails.application.credentials.production[:username] %>
+  password: <%= Rails.application.credentials.production[:password] %>
