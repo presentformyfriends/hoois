@@ -2,8 +2,8 @@
 lock "~> 3.17.0"
 
 set :application, "hoois"
-set :repo_url, "https://github.com/presentformyfriends/hoois.git"
-# set :repo_url, "git@github.com:presentformyfriends/hoois.git"
+# set :repo_url, "https://github.com/presentformyfriends/hoois.git"
+set :repo_url, "git@github.com:presentformyfriends/hoois.git"
 
 # Deploy to the user's home directory
 set :deploy_to, "/home/deploy/#{fetch :application}"
