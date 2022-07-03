@@ -87,6 +87,5 @@ test:
 #
 production:
   <<: *default
-  database: <%= Rails.application.credentials.production[:database_name] %>
-  username: <%= Rails.application.credentials.production[:username] %>
-  password: <%= Rails.application.credentials.production[:password] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  
