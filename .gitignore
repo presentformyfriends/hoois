@@ -31,14 +31,6 @@
 /public/assets
 .byebug_history
 
-# Ignore node_modules
-node_modules/
-
-# Ignore precompiled javascript packs
-/public/packs
-/public/packs-test
-/node_modules
-
 # Ignore yarn files
 /yarn-error.log
 yarn-debug.log*
@@ -127,5 +119,7 @@ build-iPhoneSimulator/
 # Ignore other secret files
 /config/initializers/secret_token.rb
 /config/secrets.yml
-
 /config/credentials/production.key
+
+# Ignore SSH keys
+/.ssh
