@@ -23,8 +23,8 @@ default: &default
 
 development:
   <<: *default
-  username: <%= Rails.application.credentials.database[:username] %>
-  password: <%= Rails.application.credentials.database[:password] %>
+  username: <%= Rails.application.credentials.development[:username] %>
+  password: <%= Rails.application.credentials.development[:password] %>
   host: localhost
   database: hoois_development
 
@@ -60,8 +60,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  username: <%= Rails.application.credentials.database[:username] %>
-  password: <%= Rails.application.credentials.database[:password] %>
+  username: <%= Rails.application.credentials.test[:username] %>
+  password: <%= Rails.application.credentials.test[:password] %>
   host: localhost
   database: hoois_test
 
@@ -87,5 +87,7 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: hoois
+  username: deploy
+  password: <%= ENV['HOOIS_DATABASE_PASSWORD'] %>
   
