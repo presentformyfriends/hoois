@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  # resources :query
+  # resources :lookups
 
   root to: "public#index", as: "homepage"
 
-  get "/lookup" => "lookup#show", as: :lookup
-
+  get 'lookup', action: :show, controller: 'lookup'
+  
 end
