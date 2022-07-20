@@ -3,13 +3,11 @@
   margin: 0;
   padding: 0;
   /* border: 3px solid limegreen; */
-  /* background-color: red; */
 }
 
 body {
   /* display: grid; */
   /* height: 100vh; */
-  /* width: 100vw; */
   width: 100vw;
   background-image: url("nature-bw.jpg");
   /* background-size: cover; */
@@ -19,8 +17,8 @@ body {
   font-family: 'Mukta', sans-serif;
   /* color: #fff; */
   overflow: hidden;
-  /* border: 3px solid limegreen;
-  background-color: red; */
+  /* border: 3px solid limegreen; */
+  /* background-color: red; */
 }
 
 h1 {
@@ -40,7 +38,7 @@ main {
   /* grid-auto-flow: row; */
   /* vertical-align: middle; */
   line-height: 1.5;
-  width: 100vw;
+  /* width: 100vw; */
   /* height: 100%; */
   /* margin: 2% auto; */
   /* padding: 1%; */
@@ -51,13 +49,10 @@ main {
 }
 
 h1 {
-  /* font-family: 'Libre Baskerville', serif; */
   font-family: 'Spinnaker', sans-serif;
   text-align: center;
   line-height: 1.2;
   font-size: 2rem;
-  /* text-shadow: 1px 1px 2px #222; */
-  /* text-shadow: 1px 1px 2px #EA9D04; */
   text-shadow: 1px 2px 5px #EA9D04;
 }
 
@@ -159,20 +154,15 @@ input[type="text"] {
 }
 
 .result {
-  /* position: relative; */
   text-align: center;
   justify-content: center;
   width: 70%;
-  /* margin: 0 auto; */
   padding: 2rem;
   font-size: 2rem;
   font-weight: 500;
-  /* color: #fff; */
   text-shadow: 1px 1px 2px #222;
   /* background: rgba(39,62,84,0.82); */
   z-index: 2;
-  /* border: 3px solid black;
-  background-color: blue; */
 }
 
 .result-format {
@@ -252,6 +242,11 @@ input[type="text"] {
 
 .eyes-container {
   display: flex;
+  min-width: 80px;
+  min-height: 80px;
+  /* width: 100%; */
+  /* border: 3px solid limegreen; */
+  /* background-color: purple; */
 }
 
 .eyes-container .eyes {
@@ -260,8 +255,7 @@ input[type="text"] {
   right: 0.2vw;
   /* width: 12.5rem; */
   width: 10.4vw;
-  /* max-width: 1000px;
-  min-width: 195px; */
+  /* min-width: 13.4vw; */
   /* height: 12.5rem; */
   height: 21.6vh;
   background-color: #fff;
@@ -278,32 +272,24 @@ input[type="text"] {
   content: "";
   /* Pupil and iris position */
   top: 50%;
-  /* top: 0.9vh; */
-  /* top: 0.4vw; */
-  /* left: 4.376rem; */
   left: 3.65vw;
   transform: translate(-50%, -50%);
-  /* transform: translate(-0.4vw, -0.9vh); */
-  /* width: 6.25rem; */
   width: 5.2vw;
-  /* height: 6.25rem; */
   height: 10.79vh;
-  /* border: 1.25rem solid #2AC93E; */
   border: 1vw solid #2AC93E;
   border-radius: 100%;
   background: #000;
 }
 
 .eyes {
-  /* width: 162px;
-  min-height: 81px; */
-  max-width: 100%;
-  height: auto;
-  max-height: 100%;
-  /* min-height: 80px; */
-  /* min-width: 81px; */
+  min-width: 162px;
+  min-height: 162px;
+  max-width: 162px;
+  max-height: 162px;
   /* align-self: flex-start; */
-  flex: 1 1 1;
+  flex: 0 1 auto;
+  flex-direction: row;
+  /* border: 3px solid limegreen; */
 }
 
 /* .cursor {
@@ -332,14 +318,14 @@ input[type="text"] {
     min-width: 300px;
   }
 
-  /* .eyes-container {
+  .eyes-container {
     margin: 5.6vh 1.1vw;
-  } */
-
-  .eyes {
-    min-width: 91px;
-    height: 61px;
   }
+
+  /* .eyes {
+    min-width: 91px;
+    min-height: 61px;
+  } */
 }
 
 @media (min-width: 400px) {
@@ -352,12 +338,16 @@ input[type="text"] {
   }
 
   .eyes-container {
+    margin: 6.5rem 1.375rem;
     justify-content: center;
   }
 
   .eyes {
-    min-width: 162px;
-    height: 162px;
+    min-width: 165px;
+    max-width: 180px;
+    min-height: 170px;
+    max-height: 200px;
+    height: 100%;
   }
 }
 

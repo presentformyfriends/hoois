@@ -1,6 +1,6 @@
 <h1>Hoois Lookup</h1>
 <%= form_tag lookup_path, class: "lookup-form", method: :get do %>
-  <%= text_field_tag(:lookup, "", autofocus: true, class: "lookup-field", size: 100, maxlength: 255, :placeholder => "Enter a domain or URL (e.g. worldbirds.com or https://worldbirds.com/)") %>
+  <%= text_field_tag(:lookup, "", :autocomplete => :off, autofocus: true, class: "lookup-field", size: 100, maxlength: 255, :placeholder => "Enter a domain or URL (e.g. worldbirds.com or https://worldbirds.com/)") %>
   <div>
     <%= submit_tag("HOOIS", name: "", class: "submit-button") %>
   </div>
