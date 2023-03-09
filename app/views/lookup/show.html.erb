@@ -1,0 +1,17 @@
+<% content_for :head do %>
+  <%= javascript_import_module_tag "custom/lookup" %>
+<% end %>
+
+<%= render "layouts/flash" %>
+<div class="home-button-wrapper">
+  <%= button_to "New Lookup", homepage_path, class: "home-button", method: :get %>
+</div>
+
+<div class="result-wrapper">
+  <div class="result">
+    <div class="result-format">
+      <h2><%= @resultHeading.downcase if @resultHeading.present? %></h2>
+      <p><%= simple_format @result if @result.present? %></p>
+    </div>
+  </div>
+</div>

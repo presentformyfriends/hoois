@@ -1,0 +1,24 @@
+<% content_for :head do %>
+  <%= javascript_import_module_tag "custom/index" %>
+<% end %>
+
+<div class="form-wrapper">
+
+  <%= form_with model: @lookup, url: "lookup", class: "form", method: :get do |form| %>
+      <%= form.label :lookup, "Enter a domain name, URL, or IP address", class: "form-label" %>
+      <%= form.text_field(:lookup, options = { value: "", class: "form-field", autocomplete: :off, autofocus: true, maxlength: 255, size: 50, placeholder: "owlpages.com" }) %>
+      <div>
+        <%= form.submit "HOOIS", name: "", class: "submit-button" %>
+      </div>
+  <% end %>
+
+    <div id="owl">
+      <div class="left eye">
+        <div class="pupil"></div>
+      </div>
+      <div class="right eye">
+        <div class="pupil"></div>
+      </div>
+    </div>
+
+</div>

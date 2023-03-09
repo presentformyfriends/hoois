@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hoois Lookup</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <noscript>
+      <div class="alert alert-warning"><i class="fa fa-warning"></i>Hoois Lookup requires JavaScript to function properly!</div>
+    </noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spinnaker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet"> 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+    <%= yield(:head) %>
+    <%= render 'application/favicon' %>
+  </head>
+
+  <body>
+
+    <div class="size-message">
+      <p>Display size not supported.<br><br>Please visit with another device.</p>
+    </div>
+
+    <main>
+
+      <div class="navbar" role="navigation">
+
+        <!-- Menu button -->      
+        <button type="button" class="menu-btn" aria-label="Menu" tabindex="0">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="navbar-list hidden">
+          <li class="navbar-item"><%= mail_to "michael.graham.dev@gmail.com", "Contact", target: "_blank", rel: "noopener" %></li>
+          <li class="navbar-item"><%= link_to "Donate", "https://www.paypal.com/donate/?business=NKPNFBPP54HYQ&no_recurring=0&item_name=If+you+find+this+tool+useful%2C+please+consider+making+a+donation.&currency_code=CAD", target: "_blank", rel: "noopener" %></li>
+        </ul>
+      
+      </div>
+
+      <h1>Hoois Lookup</h1>
+
+      <%= yield %>
+    
+    </main>
+
+  </body>
+
+</html>
