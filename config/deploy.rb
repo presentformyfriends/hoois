@@ -5,7 +5,7 @@ set :application, "hoois"
 set :repo_url, "git@github.com:presentformyfriends/hoois.git"
 
 # Deploy to the user's home directory
-set :deploy_to, "/home/deploy/#{fetch :application}"
+set :deploy_to, "/home/rr/#{fetch :application}"
 
 # Only keep the last 5 releases to save disk space
 set :keep_releases, 5
