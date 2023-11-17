@@ -1,11 +1,11 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.17.2"
 
-set :application, "hoois"
+set :application, "hoois.net"
 set :repo_url, "git@github.com:presentformyfriends/hoois.git"
 
 # Deploy to the user's home directory
-set :deploy_to, "/home/rr/#{fetch :application}"
+#set :deploy_to, "/home/rr/#{fetch :application}"
 
 # Only keep the last 5 releases to save disk space
 set :keep_releases, 5
@@ -14,7 +14,7 @@ set :keep_releases, 5
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+set :deploy_to, "/var/www/#{fetch :application}/code"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
