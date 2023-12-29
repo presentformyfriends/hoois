@@ -5,7 +5,7 @@ require "capistrano/setup"
 require "capistrano/deploy"
 
 # Custom requirements for deployment with Capistrano
-require 'capistrano/rails'
+#require 'capistrano/rails'
 require 'capistrano/passenger'
 require 'capistrano/rbenv'
 
@@ -39,7 +39,7 @@ install_plugin Capistrano::SCM::Git
 # require "capistrano/rbenv"
 # require "capistrano/chruby"
 # require "capistrano/bundler"
-# require "capistrano/rails/assets"
+require "capistrano/rails/assets"
 # require "capistrano/rails/migrations"
 # require "capistrano/passenger"
 
